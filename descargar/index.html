@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="es"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Descarga Dosia</title>
+<meta name="description" content="Dosia, tu compañera de turno: fármacos oficiales de la AEMPS, escalas, urgencias y preguntas oficiales EIR/MIR. Gratis.">
+<style>
+  /* Cuando la app esté aprobada en el App Store, cambia IOS_LIVE a true más abajo */
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100vh;font-family:-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:#1F2D3D;
+       background:linear-gradient(165deg,#1CC0B0 0%,#0E8F85 55%,#0A5F59 100%);display:flex;align-items:center;justify-content:center;padding:24px}
+  .card{background:#fff;border-radius:28px;max-width:420px;width:100%;padding:32px 26px;text-align:center;box-shadow:0 24px 60px rgba(4,30,30,.3)}
+  h1{margin:12px 0 4px;font-size:34px;letter-spacing:-.5px}
+  .sub{color:#5B6B7B;font-weight:600;margin:0 0 22px}
+  .btn{display:flex;align-items:center;justify-content:center;gap:10px;text-decoration:none;font-weight:800;font-size:17px;
+       border-radius:16px;padding:15px 18px;margin-top:12px}
+  .play{background:#0B6F68;color:#fff}
+  .ios{background:#1F2D3D;color:#fff}
+  .soon{background:#F1F5F4;color:#5B6B7B;cursor:default}
+  .note{font-size:12.5px;color:#93A1AE;margin-top:18px;line-height:1.45}
+  #msg{font-weight:700;color:#0B6F68;margin-top:14px;min-height:1em}
+</style></head>
+<body><div class="card">
+<svg width="84" height="118" viewBox="60 30 280 410" aria-hidden="true"><defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4FE0C8"/><stop offset="1" stop-color="#16B3A5"/></linearGradient></defs><path d="M200 40 C200 40 70 196 70 283.8 A130 130.2 0 0 0 330 283.8 C330 196 200 40 200 40 Z" fill="url(#g)"/><path d="M150 118 L250 118 L240 78 Q200 62 160 78 Z" fill="#fff"/><rect x="193" y="84" width="14" height="30" rx="4" fill="#FF7A6B"/><rect x="185" y="92" width="30" height="14" rx="4" fill="#FF7A6B"/><ellipse cx="160" cy="270" rx="16" ry="20" fill="#1F2D3D"/><ellipse cx="240" cy="270" rx="16" ry="20" fill="#1F2D3D"/><circle cx="166" cy="262" r="6" fill="#fff"/><circle cx="246" cy="262" r="6" fill="#fff"/><path d="M178 316 Q200 330 222 316" fill="none" stroke="#1F2D3D" stroke-width="9" stroke-linecap="round"/></svg>
+<h1>Dosia</h1>
+<p class="sub">Tu compañera de turno · Gratis</p>
+<a class="btn play" id="play" href="https://play.google.com/store/apps/details?id=com.dosia.mobile">▶ Descargar en Google Play</a>
+<a class="btn ios" id="ios" href="https://apps.apple.com/es/app/id6817307810"> Descargar en el App Store</a>
+<div id="msg"></div>
+<p class="note">Herramienta de consulta y estudio para profesionales y estudiantes sanitarios. No sustituye la prescripción ni los protocolos de tu centro.</p>
+</div>
+<script>
+  var IOS_LIVE = false; // ← pon true cuando Apple apruebe la app
+  var ua = navigator.userAgent || "";
+  var isAndroid = /android/i.test(ua);
+  var isIOS = /iphone|ipad|ipod/i.test(ua) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+  var ios = document.getElementById("ios");
+  if (!IOS_LIVE) {
+    ios.className = "btn soon"; ios.removeAttribute("href"); ios.textContent = " App Store · muy pronto";
+  }
+  if (isAndroid) {
+    location.replace(document.getElementById("play").href);
+  } else if (isIOS) {
+    if (IOS_LIVE) location.replace(ios.href);
+    else document.getElementById("msg").textContent = "La versión para iPhone llega muy pronto 💧";
+  }
+</script>
+</body></html>
